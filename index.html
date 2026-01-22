@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechBridge Program | TechLegion Verein</title>
+    <meta name="description" content="3-month workforce integration program in Switzerland for refugees and people receiving social assistance to enter the Swiss job market">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background: linear-gradient(to bottom, #eff6ff, #ffffff);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e7eb;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            color: #2563eb;
+        }
+
+        .logo-text h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        .logo-text p {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+
+        .nav-links {
+            display: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: #374151;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .lang-toggle {
+            padding: 0.375rem 0.75rem;
+            border-radius: 0.5rem;
+            background: #f3f4f6;
+            border: none;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+            transition: background 0.3s;
+        }
+
+        .lang-toggle:hover {
+            background: #e5e7eb;
+        }
+
+        .btn-primary {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            background: #2563eb;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+
+        /* Hero Carousel */
+        .hero-carousel {
+            margin-top: 64px;
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
+        }
+
+        .carousel-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 10;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            background: #2563eb;
+            color: white;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .carousel-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .carousel-content p {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .carousel-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            background: #2563eb;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .carousel-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(4px);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+            z-index: 20;
+        }
+
+        .carousel-control:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .carousel-control.prev {
+            left: 1rem;
+        }
+
+        .carousel-control.next {
+            right: 1rem;
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 20;
+        }
+
+        .carousel-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .carousel-indicator.active {
+            width: 32px;
+            border-radius: 9999px;
+            background: white;
+        }
+
+        /* Cohort Banner */
+        .cohort-banner {
+            background: linear-gradient(to right, #2563eb, #1d4ed8);
+            color: white;
+            padding: 0.75rem 1rem;
+            text-align: center;
+        }
+
+        .cohort-banner p {
+            font-size: 1.125rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 3rem 1rem;
+            background: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: #f9fafb;
+            border-radius: 1rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #2563eb;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-sublabel {
+            color: #6b7280;
+        }
+
+        /* Program Section */
+        .section {
+            padding: 4rem 1rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: #6b7280;
+        }
+
+        .content-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .content-box h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        .content-box p {
+            color: #4b5563;
+            margin-bottom: 1rem;
+        }
+
+        .content-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .content-box li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #4b5563;
+        }
+
+        .content-box li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+            font-weight: 700;
+        }
+
+        /* Structure Cards */
+        .phase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .phase-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #2563eb;
+        }
+
+        .phase-month {
+            color: #2563eb;
+            font-weight: 700;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .phase-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .phase-focus {
+            color: #6b7280;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        /* Benefits Grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .benefit-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 1rem;
+            color: #2563eb;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .team-info {
+            padding: 1.5rem;
+        }
+
+        .team-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .team-position {
+            color: #2563eb;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .team-bio {
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+
+        .team-contact {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .team-contact a {
+            color: #6b7280;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .team-contact a:hover {
+            color: #2563eb;
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            background: linear-gradient(to right, #2563eb, #1d4ed8);
+            color: white;
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 2rem auto 0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            border: none;
+            outline: none;
+        }
+
+        .newsletter-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            background: white;
+            color: #2563eb;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .newsletter-btn:hover {
+            background: #f3f4f6;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            color: #4b5563;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #2563eb;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 3rem 1rem 1.5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #d1d5db;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .social-icon:hover {
+            background: #2563eb;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #6b7280;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn-secondary {
+            flex: 1;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            background: #f3f4f6;
+            color: #374151;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: #e5e7eb;
+        }
+
+        .btn-submit {
+            flex: 1;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            background: #2563eb;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: #1d4ed8;
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+
+            .carousel-content h1 {
+                font-size: 4rem;
+            }
+
+            .carousel-content p {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .carousel-content h1 {
+                font-size: 2rem;
+            }
+
+            .carousel-content p {
+                font-size: 1.125rem;
+            }
+        }
+
+        /* Utility Classes */
+        .hidden {
+            display: none;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <div class="logo">
+                <svg class="logo-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+                <div class="logo-text">
+                    <h1>TechBridge</h1>
+                    <p>by TechLegion Verein</p>
+                </div>
+            </div>
+            
+            <div class="nav-links">
+                <a href="#program">Programm</a>
+                <a href="#structure">Struktur</a>
+                <a href="#outcomes">Resultate</a>
+                <a href="#team">Team</a>
+                <a href="#contact">Kontakt</a>
+            </div>
+
+            <div class="nav-actions">
+                <button class="lang-toggle" onclick="toggleLanguage()">
+                    <span id="langToggleText">EN</span>
+                </button>
+                <button class="btn-primary" onclick="openApplicationForm()">
+                    <span id="applyNowText">Jetzt bewerben</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Carousel -->
+    <section class="hero-carousel">
+        <div class="carousel-slide active">
+            <img src="https://images.unsplash.com/photo-1618593158420-ec88ec1c69fc?w=1600" alt="TechBridge Switzerland">
+            <div class="carousel-overlay"></div>
+            <div class="carousel-content">
+                <div class="hero-badge">
+                    <span>⭐ NEXT STEP CH</span>
+                </div>
+                <h1 id="carouselTitle1">TechBridge Switzerland</h1>
+                <p id="carouselSubtitle1">Dein Weg in den Schweizer Tech-Arbeitsmarkt</p>
+                <button class="carousel-btn" onclick="openApplicationForm()">
+                    <span id="heroCtaText">Jetzt bewerben</span>
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1765438863717-49fca900f861?w=1600" alt="Praxisorientiertes Training">
+            <div class="carousel-overlay"></div>
+            <div class="carousel-content">
+                <div class="hero-badge">
+                    <span>⭐ NEXT STEP CH</span>
+                </div>
+                <h1 id="carouselTitle2">Praxisorientiertes Training</h1>
+                <p id="carouselSubtitle2">3-Monats-Programm für nachhaltigen Erfolg</p>
+                <button class="carousel-btn" onclick="openApplicationForm()">
+                    <span>Jetzt bewerben</span>
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1554686177-87b3c0e1a575?w=1600" alt="Persönliches Coaching">
+            <div class="carousel-overlay"></div>
+            <div class="carousel-content">
+                <div class="hero-badge">
+                    <span>⭐ NEXT STEP CH</span>
+                </div>
+                <h1 id="carouselTitle3">Persönliches Coaching</h1>
+                <p id="carouselSubtitle3">Individuelle Unterstützung auf deinem Karriereweg</p>
+                <button class="carousel-btn" onclick="openApplicationForm()">
+                    <span>Jetzt bewerben</span>
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1763739527636-d3d8cac52d6b?w=1600" alt="Networking & Kontakte">
+            <div class="carousel-overlay"></div>
+            <div class="carousel-content">
+                <div class="hero-badge">
+                    <span>⭐ NEXT STEP CH</span>
+                </div>
+                <h1 id="carouselTitle4">Networking & Kontakte</h1>
+                <p id="carouselSubtitle4">Verbinde dich mit Top-Unternehmen in der Schweiz</p>
+                <button class="carousel-btn" onclick="openApplicationForm()">
+                    <span>Jetzt bewerben</span>
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <button class="carousel-control prev" onclick="changeSlide(-1)">
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: white;">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </button>
+        <button class="carousel-control next" onclick="changeSlide(1)">
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: white;">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </button>
+
+        <div class="carousel-indicators">
+            <button class="carousel-indicator active" onclick="goToSlide(0)"></button>
+            <button class="carousel-indicator" onclick="goToSlide(1)"></button>
+            <button class="carousel-indicator" onclick="goToSlide(2)"></button>
+            <button class="carousel-indicator" onclick="goToSlide(3)"></button>
+        </div>
+    </section>
+
+    <!-- Cohort Announcement Banner -->
+    <div class="cohort-banner">
+        <p>
+            <svg class="icon" fill="currentColor" viewBox="0 0 24 24" style="width: 20px; height: 20px;">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+            <span id="cohortBannerText">Nächste Kohorte startet im März 2026 • Jetzt anmelden!</span>
+        </p>
+    </div>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">3</div>
+                <div class="stat-label" id="stat1Label">Monate</div>
+                <div class="stat-sublabel" id="stat1Sublabel">Strukturiertes Programm</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">15-25</div>
+                <div class="stat-label" id="stat2Label">Teilnehmer</div>
+                <div class="stat-sublabel" id="stat2Sublabel">Pro Kohorte</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label" id="stat3Label">Praxisnah</div>
+                <div class="stat-sublabel" id="stat3Sublabel">Arbeitsmarktorientiert</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About/Program Section -->
+    <section class="section" id="program">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="aboutTitle">Arbeitsmarktintegration durch gezieltes Coaching</h2>
+                <p class="section-subtitle" id="aboutSubtitle">Pilotprojekt Kanton Zürich</p>
+            </div>
+
+            <div class="content-box">
+                <p id="aboutDescription">Das Projekt unterstützt die kantonalen Integrationsziele, indem es Personen mit bestehendem Potenzial gezielt befähigt, rasch und nachhaltig in den Schweizer Arbeitsmarkt einzutreten.</p>
+            </div>
+
+            <div class="content-box">
+                <h3 id="goalTitle">Programmziel</h3>
+                <p id="goalText">Stärkung der Arbeitsmarktfähigkeit von Personen in der Schweiz, die soziale oder integrationsbezogene Unterstützung erhalten, mit besonderem Fokus auf Personen mit Schutzstatus S.</p>
+            </div>
+
+            <div class="content-box">
+                <h3 id="targetTitle">Zielgruppe</h3>
+                <ul id="targetList">
+                    <li>Personen mit Sozialhilfe</li>
+                    <li>Integrationsleistungen</li>
+                    <li>Status-S-Unterstützung (Ukrainer*innen)</li>
+                    <li>Bestehende berufliche oder Ausbildungshintergründe</li>
+                    <li>Hohe Motivation zur Arbeitsaufnahme</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Structure Section -->
+    <section class="section" id="structure" style="background: #f9fafb;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="structureTitle">Programmstruktur</h2>
+                <p class="section-subtitle" id="structureSubtitle">3 Monate – Aktivierungsmassnahme</p>
+            </div>
+
+            <div class="phase-grid">
+                <div class="phase-card">
+                    <div class="phase-month" id="month1">Monat 1</div>
+                    <h3 id="phase1Title">Orientierung & Standortbestimmung</h3>
+                    <p class="phase-focus" id="phase1Focus">Sich selbst und den Schweizer Arbeitsmarkt verstehen</p>
+                    <ul id="phase1Items">
+                        <li>CV-Überprüfung und Anpassung an Schweizer Standards</li>
+                        <li>Geheimnisse von Bewerbungsschreiben und Zeugnissen</li>
+                        <li>Identifikation persönlicher Stärken</li>
+                        <li>Professionelle Selbstpräsentation</li>
+                        <li>Einführung in die Schweizer Arbeitskultur</li>
+                        <li>Aufbau von Sprachkompetenz</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <div class="phase-month" id="month2">Monat 2</div>
+                    <h3 id="phase2Title">Aktivierung & Praxiseinblicke</h3>
+                    <p class="phase-focus" id="phase2Focus">Reale Orientierung und Vertrauen aufbauen</p>
+                    <ul id="phase2Items">
+                        <li>Mock-Interviews und Coaching</li>
+                        <li>Bewerbungsstrategie (wo & wie)</li>
+                        <li>Besuche bei lokalen Unternehmen</li>
+                        <li>Jobmessen und Networking-Events</li>
+                        <li>Gastvorträge von Arbeitgebenden</li>
+                        <li>Erfahrungsaustausch mit erfolgreichen Teilnehmenden</li>
+                    </ul>
+                </div>
+
+                <div class="phase-card">
+                    <div class="phase-month" id="month3">Monat 3</div>
+                    <h3 id="phase3Title">Übergang in Erwerbstätigkeit</h3>
+                    <p class="phase-focus" id="phase3Focus">Vermittlung und nachhaltige Platzierung</p>
+                    <ul id="phase3Items">
+                        <li>Individuelle Karriereplanung</li>
+                        <li>Persönlicher Entwicklungsplan</li>
+                        <li>Finales CV & LinkedIn Review</li>
+                        <li>Direkte Unternehmensvorstellungen</li>
+                        <li>Kontakte zu Recruitern</li>
+                        <li>Bewerbungsunterstützung und Verhandlungsgrundlagen</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outcomes Section -->
+    <section class="section" id="outcomes">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="outcomesTitle">Zielerreichung & Wirkung</h2>
+                <p class="section-subtitle" id="outcomesSubtitle">Messbare Erfolge für nachhaltige Integration</p>
+            </div>
+
+            <div class="content-box">
+                <h3 id="primaryTitle">Primäres Ziel</h3>
+                <p><strong id="primaryMetric">Anzahl Teilnehmende mit Jobangeboten</strong></p>
+                <p id="primaryDescription">Während oder kurz nach dem Programm</p>
+            </div>
+
+            <div class="content-box">
+                <h3 id="secondaryTitle">Sekundäre Ziele</h3>
+                <ul id="secondaryList">
+                    <li>Reduktion der Abhängigkeit von Sozialhilfe</li>
+                    <li>Programm-Abschlussrate</li>
+                    <li>Teilnehmerzufriedenheit</li>
+                    <li>Arbeitgeber-Feedback</li>
+                    <li>Verkürzte Dauer bis Arbeitsmarkteintritt</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section" style="background: #f9fafb;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="benefitsTitle">Warum dieses Programm funktioniert</h2>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <svg class="benefit-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <h3 id="benefit1Title">Schnell & Praktisch</h3>
+                    <p id="benefit1Desc">Fokus auf Aktivierung statt langwierige Umschulungen</p>
+                </div>
+                <div class="benefit-card">
+                    <svg class="benefit-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                    </svg>
+                    <h3 id="benefit2Title">Auf Kompetenzen aufbauen</h3>
+                    <p id="benefit2Desc">Nutzt bestehende Fähigkeiten statt bei Null anzufangen</p>
+                </div>
+                <div class="benefit-card">
+                    <svg class="benefit-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                    </svg>
+                    <h3 id="benefit3Title">Reduktion der Langzeitabhängigkeit</h3>
+                    <p id="benefit3Desc">Schnellere Integration = weniger Unterstützungskosten</p>
+                </div>
+                <div class="benefit-card">
+                    <svg class="benefit-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                    <h3 id="benefit4Title">Win-Win-Situation</h3>
+                    <p id="benefit4Desc">Teilnehmende gewinnen Eigenständigkeit, Arbeitgebende gewinnen Talente</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section" id="team">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="teamTitle">Unser Team</h2>
+                <p class="section-subtitle" id="teamSubtitle">Erfahrene Experten für deine Karriere</p>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-card">
+                    <img class="team-image" src="https://images.unsplash.com/photo-1649589244330-09ca58e4fa64?w=400" alt="Tamara Weber">
+                    <div class="team-info">
+                        <div class="team-name">Tamara Weber</div>
+                        <div class="team-position" id="team1Position">Programmleiterin & Career Coach</div>
+                        <p class="team-bio" id="team1Bio">10+ Jahre Erfahrung in der Karriereberatung und Arbeitsmarktintegration. Spezialisiert auf Tech-Recruiting und internationale Talentförderung.</p>
+                        <div class="team-contact">
+                            <a href="mailto:tamara@techbridge.ch">
+                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </a>
+                            <a href="https://linkedin.com/in/tamara-weber" target="_blank">
+                                <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img class="team-image" src="https://images.unsplash.com/photo-1590650467980-8eadfa86ff48?w=400" alt="Julia Schneider">
+                    <div class="team-info">
+                        <div class="team-name">Julia Schneider</div>
+                        <div class="team-position" id="team2Position">Integration Specialist</div>
+                        <p class="team-bio" id="team2Bio">Expertin für interkulturelle Kommunikation und Arbeitsmarktintegration. Mehrjährige Erfahrung in der Begleitung von Geflüchteten und Migranten.</p>
+                        <div class="team-contact">
+                            <a href="mailto:julia@techbridge.ch">
+                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </a>
+                            <a href="https://linkedin.com/in/julia-schneider" target="_blank">
+                                <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <img class="team-image" src="https://images.unsplash.com/photo-1672685667592-0392f458f46f?w=400" alt="Alper Yilmaz">
+                    <div class="team-info">
+                        <div class="team-name">Alper Yilmaz</div>
+                        <div class="team-position" id="team3Position">Tech Mentor & Employer Relations</div>
+                        <p class="team-bio" id="team3Bio">Tech-Industrie-Veteran mit umfangreichem Netzwerk in der Schweizer IT-Branche. Baut Brücken zwischen Talenten und Top-Arbeitgebern.</p>
+                        <div class="team-contact">
+                            <a href="mailto:alper@techbridge.ch">
+                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </a>
+                            <a href="https://linkedin.com/in/alper-yilmaz" target="_blank">
+                                <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2 class="section-title" style="color: white;" id="newsletterTitle">Bleiben Sie informiert</h2>
+            <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.9);" id="newsletterSubtitle">Abonnieren Sie unseren Newsletter für Updates über das Programm, Erfolgsgeschichten und Karrieretipps.</p>
+            <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
+                <input type="email" class="newsletter-input" placeholder="Ihre E-Mail-Adresse" id="newsletterEmailInput" required>
+                <button type="submit" class="newsletter-btn" id="newsletterBtn">Abonnieren</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="contactTitle">Jetzt teilnehmen oder Partner werden</h2>
+                <p class="section-subtitle" id="contactSubtitle">Interessiert am Programm? Kontaktieren Sie uns für weitere Informationen oder eine Zusammenarbeit.</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3 id="contactInfoTitle">Kontaktinformationen</h3>
+                    <div class="contact-item">
+                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        <span id="contactLocation">Pilotprojekt: Kanton Zürich / Zug</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        <span>info@techbridge.ch</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                        </svg>
+                        <span>+41 XX XXX XX XX</span>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form onsubmit="handleContactSubmit(event)">
+                        <div class="form-group">
+                            <label for="contactName" id="contactNameLabel">Ihr Name</label>
+                            <input type="text" id="contactName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail" id="contactEmailLabel">E-Mail-Adresse</label>
+                            <input type="email" id="contactEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactRole" id="contactRoleLabel">Ich bin...</label>
+                            <select id="contactRole" required>
+                                <option value="participant">Teilnehmer*in</option>
+                                <option value="municipality">Gemeinde / Sozialdienst</option>
+                                <option value="employer">Arbeitgeber / Partner</option>
+                                <option value="other">Andere</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactMessage" id="contactMessageLabel">Ihre Nachricht</label>
+                            <textarea id="contactMessage" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width: 100%;" id="contactSubmitBtn">Nachricht senden</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>TechBridge Program</h4>
+                <p>Ein Projekt von TechLegion Verein zur Förderung der Arbeitsmarktintegration in der Schweiz.</p>
+                <div class="social-icons">
+                    <a href="https://linkedin.com" class="social-icon" target="_blank">
+                        <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+                        </svg>
+                    </a>
+                    <a href="https://facebook.com" class="social-icon" target="_blank">
+                        <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com" class="social-icon" target="_blank">
+                        <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path>
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com" class="social-icon" target="_blank">
+                        <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4 id="footerQuickLinksTitle">Quick Links</h4>
+                <a href="#program">Programm</a>
+                <a href="#structure">Struktur</a>
+                <a href="#outcomes">Resultate</a>
+                <a href="#team">Team</a>
+                <a href="#contact">Kontakt</a>
+            </div>
+
+            <div class="footer-section">
+                <h4 id="footerPartnersTitle">Partner & Unterstützer</h4>
+                <p>Kanton Zürich</p>
+                <p>Integrationsagenda Schweiz</p>
+                <p>TechLegion Verein</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 TechBridge Program by TechLegion Verein. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Application Modal -->
+    <div class="modal" id="applicationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Bewerbung für TechBridge Programm</h2>
+                <p id="modalSubtitle">Werde Teil der nächsten Kohorte</p>
+            </div>
+            <form onsubmit="handleApplicationSubmit(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName" id="firstNameLabel">Vorname</label>
+                        <input type="text" id="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName" id="lastNameLabel">Nachname</label>
+                        <input type="text" id="lastName" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email" id="emailLabel">E-Mail-Adresse</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" id="phoneLabel">Telefonnummer</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="status" id="statusLabel">Status</label>
+                        <select id="status" required>
+                            <option value="status-s">Schutzstatus S (Ukraine)</option>
+                            <option value="social-assistance">Sozialhilfe</option>
+                            <option value="integration-support">Integrationsleistungen</option>
+                            <option value="other">Andere</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="germanLevel" id="germanLevelLabel">Deutschkenntnisse</label>
+                        <select id="germanLevel" required>
+                            <option value="A1">A1</option>
+                            <option value="A2">A2</option>
+                            <option value="B1">B1</option>
+                            <option value="B2">B2</option>
+                            <option value="C1">C1</option>
+                            <option value="C2">C2</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="background" id="backgroundLabel">Beruflicher Hintergrund</label>
+                    <textarea id="background" placeholder="Beschreibe kurz deine berufliche Erfahrung..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="motivation" id="motivationLabel">Motivation</label>
+                    <textarea id="motivation" placeholder="Warum möchtest du am TechBridge Programm teilnehmen?" required></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeApplicationForm()" id="cancelBtn">Abbrechen</button>
+                    <button type="submit" class="btn-submit" id="submitBtn">Bewerbung absenden</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Language state
+        let currentLanguage = 'de';
+
+        // Carousel state
+        let currentSlide = 0;
+        const totalSlides = 4;
+
+        // Carousel translations
+        const carouselContent = {
+            de: [
+                { title: 'TechBridge Switzerland', subtitle: 'Dein Weg in den Schweizer Tech-Arbeitsmarkt' },
+                { title: 'Praxisorientiertes Training', subtitle: '3-Monats-Programm für nachhaltigen Erfolg' },
+                { title: 'Persönliches Coaching', subtitle: 'Individuelle Unterstützung auf deinem Karriereweg' },
+                { title: 'Networking & Kontakte', subtitle: 'Verbinde dich mit Top-Unternehmen in der Schweiz' }
+            ],
+            en: [
+                { title: 'TechBridge Switzerland', subtitle: 'Your path into the Swiss tech labor market' },
+                { title: 'Hands-on Training', subtitle: '3-month program for sustainable success' },
+                { title: 'Personal Coaching', subtitle: 'Individual support on your career path' },
+                { title: 'Networking & Contacts', subtitle: 'Connect with top companies in Switzerland' }
+            ]
+        };
+
+        // Translations
+        const translations = {
+            de: {
+                applyNow: 'Jetzt bewerben',
+                cohortBanner: 'Nächste Kohorte startet im März 2026 • Jetzt anmelden!',
+                stat1Label: 'Monate',
+                stat1Sublabel: 'Strukturiertes Programm',
+                stat2Label: 'Teilnehmer',
+                stat2Sublabel: 'Pro Kohorte',
+                stat3Label: 'Praxisnah',
+                stat3Sublabel: 'Arbeitsmarktorientiert',
+                aboutTitle: 'Arbeitsmarktintegration durch gezieltes Coaching',
+                aboutSubtitle: 'Pilotprojekt Kanton Zürich',
+                aboutDescription: 'Das Projekt unterstützt die kantonalen Integrationsziele, indem es Personen mit bestehendem Potenzial gezielt befähigt, rasch und nachhaltig in den Schweizer Arbeitsmarkt einzutreten.',
+                goalTitle: 'Programmziel',
+                goalText: 'Stärkung der Arbeitsmarktfähigkeit von Personen in der Schweiz, die soziale oder integrationsbezogene Unterstützung erhalten, mit besonderem Fokus auf Personen mit Schutzstatus S.',
+                targetTitle: 'Zielgruppe',
+                structureTitle: 'Programmstruktur',
+                structureSubtitle: '3 Monate – Aktivierungsmassnahme',
+                month1: 'Monat 1',
+                month2: 'Monat 2',
+                month3: 'Monat 3',
+                phase1Title: 'Orientierung & Standortbestimmung',
+                phase1Focus: 'Sich selbst und den Schweizer Arbeitsmarkt verstehen',
+                phase2Title: 'Aktivierung & Praxiseinblicke',
+                phase2Focus: 'Reale Orientierung und Vertrauen aufbauen',
+                phase3Title: 'Übergang in Erwerbstätigkeit',
+                phase3Focus: 'Vermittlung und nachhaltige Platzierung',
+                outcomesTitle: 'Zielerreichung & Wirkung',
+                outcomesSubtitle: 'Messbare Erfolge für nachhaltige Integration',
+                primaryTitle: 'Primäres Ziel',
+                primaryMetric: 'Anzahl Teilnehmende mit Jobangeboten',
+                primaryDescription: 'Während oder kurz nach dem Programm',
+                secondaryTitle: 'Sekundäre Ziele',
+                benefitsTitle: 'Warum dieses Programm funktioniert',
+                benefit1Title: 'Schnell & Praktisch',
+                benefit1Desc: 'Fokus auf Aktivierung statt langwierige Umschulungen',
+                benefit2Title: 'Auf Kompetenzen aufbauen',
+                benefit2Desc: 'Nutzt bestehende Fähigkeiten statt bei Null anzufangen',
+                benefit3Title: 'Reduktion der Langzeitabhängigkeit',
+                benefit3Desc: 'Schnellere Integration = weniger Unterstützungskosten',
+                benefit4Title: 'Win-Win-Situation',
+                benefit4Desc: 'Teilnehmende gewinnen Eigenständigkeit, Arbeitgebende gewinnen Talente',
+                teamTitle: 'Unser Team',
+                teamSubtitle: 'Erfahrene Experten für deine Karriere',
+                team1Position: 'Programmleiterin & Career Coach',
+                team1Bio: '10+ Jahre Erfahrung in der Karriereberatung und Arbeitsmarktintegration. Spezialisiert auf Tech-Recruiting und internationale Talentförderung.',
+                team2Position: 'Integration Specialist',
+                team2Bio: 'Expertin für interkulturelle Kommunikation und Arbeitsmarktintegration. Mehrjährige Erfahrung in der Begleitung von Geflüchteten und Migranten.',
+                team3Position: 'Tech Mentor & Employer Relations',
+                team3Bio: 'Tech-Industrie-Veteran mit umfangreichem Netzwerk in der Schweizer IT-Branche. Baut Brücken zwischen Talenten und Top-Arbeitgebern.',
+                newsletterTitle: 'Bleiben Sie informiert',
+                newsletterSubtitle: 'Abonnieren Sie unseren Newsletter für Updates über das Programm, Erfolgsgeschichten und Karrieretipps.',
+                newsletterEmailInput: 'Ihre E-Mail-Adresse',
+                newsletterBtn: 'Abonnieren',
+                contactTitle: 'Jetzt teilnehmen oder Partner werden',
+                contactSubtitle: 'Interessiert am Programm? Kontaktieren Sie uns für weitere Informationen oder eine Zusammenarbeit.',
+                contactInfoTitle: 'Kontaktinformationen',
+                contactLocation: 'Pilotprojekt: Kanton Zürich / Zug',
+                contactNameLabel: 'Ihr Name',
+                contactEmailLabel: 'E-Mail-Adresse',
+                contactRoleLabel: 'Ich bin...',
+                contactMessageLabel: 'Ihre Nachricht',
+                contactSubmitBtn: 'Nachricht senden',
+                footerQuickLinksTitle: 'Quick Links',
+                footerPartnersTitle: 'Partner & Unterstützer',
+                modalTitle: 'Bewerbung für TechBridge Programm',
+                modalSubtitle: 'Werde Teil der nächsten Kohorte',
+                firstNameLabel: 'Vorname',
+                lastNameLabel: 'Nachname',
+                emailLabel: 'E-Mail-Adresse',
+                phoneLabel: 'Telefonnummer',
+                statusLabel: 'Status',
+                germanLevelLabel: 'Deutschkenntnisse',
+                backgroundLabel: 'Beruflicher Hintergrund',
+                motivationLabel: 'Motivation',
+                cancelBtn: 'Abbrechen',
+                submitBtn: 'Bewerbung absenden'
+            },
+            en: {
+                applyNow: 'Apply Now',
+                cohortBanner: 'Next cohort starts March 2026 • Register now!',
+                stat1Label: 'Months',
+                stat1Sublabel: 'Structured Program',
+                stat2Label: 'Participants',
+                stat2Sublabel: 'Per Cohort',
+                stat3Label: 'Practical',
+                stat3Sublabel: 'Employment-Focused',
+                aboutTitle: 'Workforce Integration through Targeted Coaching',
+                aboutSubtitle: 'Pilot Project Canton Zurich',
+                aboutDescription: 'The program supports cantonal integration goals by specifically empowering people with existing potential to enter the Swiss labor market quickly and sustainably.',
+                goalTitle: 'Program Goal',
+                goalText: 'To strengthen the employability of people residing in Switzerland who receive social or integration-related support, with a particular focus on people with protection status S.',
+                targetTitle: 'Target Group',
+                structureTitle: 'Program Structure',
+                structureSubtitle: '3 Months – Activation Measure',
+                month1: 'Month 1',
+                month2: 'Month 2',
+                month3: 'Month 3',
+                phase1Title: 'Orientation & Assessment',
+                phase1Focus: 'Understanding yourself and the Swiss job market',
+                phase2Title: 'Activation & Market Exposure',
+                phase2Focus: 'Real-world orientation and confidence building',
+                phase3Title: 'Transition to Employment',
+                phase3Focus: 'Placement and sustainable integration',
+                outcomesTitle: 'Outcomes & Impact',
+                outcomesSubtitle: 'Measurable success for sustainable integration',
+                primaryTitle: 'Primary Goal',
+                primaryMetric: 'Number of participants receiving job offers',
+                primaryDescription: 'During or shortly after the program',
+                secondaryTitle: 'Secondary Goals',
+                benefitsTitle: 'Why This Program Works',
+                benefit1Title: 'Fast & Practical',
+                benefit1Desc: 'Focus on activation instead of lengthy retraining',
+                benefit2Title: 'Build on Competencies',
+                benefit2Desc: 'Leverages existing skills instead of starting from zero',
+                benefit3Title: 'Reduce Long-term Dependency',
+                benefit3Desc: 'Faster integration = lower support costs',
+                benefit4Title: 'Win-Win Situation',
+                benefit4Desc: 'Participants gain independence, employers gain talent',
+                teamTitle: 'Our Team',
+                teamSubtitle: 'Experienced experts for your career',
+                team1Position: 'Program Director & Career Coach',
+                team1Bio: '10+ years of experience in career counseling and labor market integration. Specialized in tech recruiting and international talent development.',
+                team2Position: 'Integration Specialist',
+                team2Bio: 'Expert in intercultural communication and labor market integration. Multiple years of experience supporting refugees and migrants.',
+                team3Position: 'Tech Mentor & Employer Relations',
+                team3Bio: 'Tech industry veteran with extensive network in the Swiss IT sector. Building bridges between talents and top employers.',
+                newsletterTitle: 'Stay Informed',
+                newsletterSubtitle: 'Subscribe to our newsletter for program updates, success stories, and career tips.',
+                newsletterEmailInput: 'Your email address',
+                newsletterBtn: 'Subscribe',
+                contactTitle: 'Join Now or Become a Partner',
+                contactSubtitle: 'Interested in the program? Contact us for more information or collaboration.',
+                contactInfoTitle: 'Contact Information',
+                contactLocation: 'Pilot Project: Canton Zurich / Zug',
+                contactNameLabel: 'Your Name',
+                contactEmailLabel: 'Email Address',
+                contactRoleLabel: 'I am...',
+                contactMessageLabel: 'Your Message',
+                contactSubmitBtn: 'Send Message',
+                footerQuickLinksTitle: 'Quick Links',
+                footerPartnersTitle: 'Partners & Supporters',
+                modalTitle: 'Application for TechBridge Program',
+                modalSubtitle: 'Join the next cohort',
+                firstNameLabel: 'First Name',
+                lastNameLabel: 'Last Name',
+                emailLabel: 'Email Address',
+                phoneLabel: 'Phone Number',
+                statusLabel: 'Status',
+                germanLevelLabel: 'German Language Level',
+                backgroundLabel: 'Professional Background',
+                motivationLabel: 'Motivation',
+                cancelBtn: 'Cancel',
+                submitBtn: 'Submit Application'
+            }
+        };
+
+        // Carousel functions
+        function changeSlide(direction) {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const indicators = document.querySelectorAll('.carousel-indicator');
+            
+            slides[currentSlide].classList.remove('active');
+            indicators[currentSlide].classList.remove('active');
+            
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            
+            slides[currentSlide].classList.add('active');
+            indicators[currentSlide].classList.add('active');
+        }
+
+        function goToSlide(index) {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const indicators = document.querySelectorAll('.carousel-indicator');
+            
+            slides[currentSlide].classList.remove('active');
+            indicators[currentSlide].classList.remove('active');
+            
+            currentSlide = index;
+            
+            slides[currentSlide].classList.add('active');
+            indicators[currentSlide].classList.add('active');
+        }
+
+        // Auto-advance carousel
+        setInterval(() => {
+            changeSlide(1);
+        }, 5000);
+
+        // Language toggle
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'de' ? 'en' : 'de';
+            updateLanguage();
+        }
+
+        function updateLanguage() {
+            const t = translations[currentLanguage];
+            
+            // Update language toggle button
+            document.getElementById('langToggleText').textContent = currentLanguage === 'de' ? 'EN' : 'DE';
+            
+            // Update all translatable elements
+            Object.keys(t).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    if (element.tagName === 'INPUT' && element.type !== 'submit') {
+                        element.placeholder = t[key];
+                    } else {
+                        element.textContent = t[key];
+                    }
+                }
+            });
+
+            // Update carousel content
+            updateCarouselContent();
+        }
+
+        function updateCarouselContent() {
+            const content = carouselContent[currentLanguage];
+            content.forEach((item, index) => {
+                const titleElement = document.getElementById(`carouselTitle${index + 1}`);
+                const subtitleElement = document.getElementById(`carouselSubtitle${index + 1}`);
+                if (titleElement) titleElement.textContent = item.title;
+                if (subtitleElement) subtitleElement.textContent = item.subtitle;
+            });
+        }
+
+        // Modal functions
+        function openApplicationForm() {
+            document.getElementById('applicationModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeApplicationForm() {
+            document.getElementById('applicationModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on outside click
+        document.getElementById('applicationModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeApplicationForm();
+            }
+        });
+
+        // Form submissions
+        function handleApplicationSubmit(event) {
+            event.preventDefault();
+            alert(currentLanguage === 'de' ? 
+                'Vielen Dank für Ihre Bewerbung! Wir werden uns in Kürze bei Ihnen melden.' : 
+                'Thank you for your application! We will contact you shortly.');
+            closeApplicationForm();
+            event.target.reset();
+        }
+
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            alert(currentLanguage === 'de' ? 
+                'Vielen Dank für Ihre Nachricht! Wir melden uns bald bei Ihnen.' : 
+                'Thank you for your message! We will get back to you soon.');
+            event.target.reset();
+        }
+
+        function handleNewsletterSubmit(event) {
+            event.preventDefault();
+            alert(currentLanguage === 'de' ? 
+                'Vielen Dank für Ihr Abonnement!' : 
+                'Thank you for subscribing!');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
