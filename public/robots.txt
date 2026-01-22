@@ -1,0 +1,69 @@
+# Robots.txt for Delibix - AI-Native Digital Consulting
+# https://delibix.com/robots.txt
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://delibix.com/sitemap.xml
+
+# Disallow private and admin areas
+Disallow: /admin/
+Disallow: /login
+Disallow: /signup
+Disallow: /account-dashboard/
+Disallow: /admin-dashboard/
+Disallow: /notifications/
+Disallow: /shopping-cart/
+Disallow: /forgot-password/
+
+# Disallow search and filter pages to prevent duplicate content
+Disallow: /search?*
+Disallow: /*?utm_*
+Disallow: /*?fbclid=*
+Disallow: /*?gclid=*
+
+# Allow specific bot access to public resources
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+# Facebook crawler for Open Graph
+User-agent: facebookexternalhit
+Allow: /
+
+# Twitter crawler for Twitter Cards
+User-agent: Twitterbot
+Allow: /
+
+# LinkedIn crawler
+User-agent: LinkedInBot
+Allow: /
+
+# WhatsApp crawler
+User-agent: WhatsApp
+Allow: /
+
+# Disallow common bot crawlers that don't add value
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: dotbot
+Disallow: /
+
+# Host preference (helps with canonicalization)
+Host: delibix.com
